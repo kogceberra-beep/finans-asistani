@@ -6,7 +6,9 @@ aylık bütçeyi izleyip kişiselleştirilmiş tasarruf önerileri üreten masa�
 ## Özellikler
 - SQLite ile harcama, kategori, birikim hedefi ve ayar saklama
 - **Gerçek banka verisi:** hesap hareketleri ve kart ekstresi (CSV/Excel) içe aktarma; sütunlar otomatik eşleşir, tekrar yüklemede kayıt çoğalmaz, kart borcu ödemesi/virman gider sayılmaz, iadeler düşülür
-- **Mutabakat:** aynı harcama SMS, fiş ve ekstreden ayrı ayrı girdiğinde çift sayımı bulur ve bankanın resmi kaydını asıl kabul ederek birleştirir
+- **Ekstreyi kendiliğinden yükleme:** seçilen klasörü izler, bankadan indirdiğiniz hesap ekstresini tanıyıp içeri aktarır; dosya seçmek gerekmez
+- **Türetilmiş bakiye:** bakiye bir "çıpa" tarihinden ve sonraki hareketlerden hesaplanır, elle güncellemek gerekmez
+- **Mutabakat:** aynı harcama fiş ve ekstreden ayrı ayrı girdiğinde çift sayımı bulur ve bankanın resmi kaydını asıl kabul ederek birleştirir
 - **Nakit akışı takvimi:** ayın gün gün para giriş/çıkışı, sabit giderlerin hangi gün düşeceği ve bakiyenin nasıl seyredeceği; bakiye eksiye düşecekse önceden uyarır
 - **Öğrenen kategoriler:** bir kaydın kategorisini düzelttiğinizde aynı işyerinin sonraki harcamaları otomatik o kategoriye düşer
 - Gelir takibi ve hesap bakiyesi
@@ -25,6 +27,22 @@ aylık bütçeyi izleyip kişiselleştirilmiş tasarruf önerileri üreten masa�
 - Analiz motoru: bütçe aşımı uyarıları, günlük limit, aylık trend
 
 > Derste göstereceklerin sırası ve ne söyleneceği için **[SUNUM.md](SUNUM.md)** dosyasına bakın.
+
+## Neden bu uygulama
+
+Ayda bir kez bankadan dosya indirirsiniz; gerisini uygulama yapar ve ay bitmeden ne olacağını söyler.
+
+- **Birden fazla bankayı tek tabloda görmek.** Banka uygulamaları yalnızca kendi bankasını görür;
+  iki hesabın ve nakdin toplamını gösteren başka bir yer yoktur.
+- **Geçmişi değil geleceği anlatması.** Banka uygulaması "geçen ay ne harcadın" der. Bu uygulama
+  "ayın 2'sinde kira, 17'sinde elektrik çıkacak, 15'inde bakiyen şuraya iniyor" der.
+- **Nakit ve fişin görünmesi.** Banka nakit harcamayı yapısal olarak göremez; fiş okuma bu boşluğu doldurur.
+- **Verinin yerel kalması.** Finansal geçmiş üçüncü bir tarafa gitmez, abonelik ücreti yoktur.
+
+**Kimin kullanmaması gerektiği:** tek bankası olan, yalnızca kartla harcayan ve telefonunda görmek
+isteyen biri kendi banka uygulamasıyla aynı bilgiye ulaşır.
+
+**Aylık emek:** iki bankadan ekstre indirmek (~2 dakika) ve nakit harcama varsa elle eklemek.
 
 ## Kurulum
 ```bash

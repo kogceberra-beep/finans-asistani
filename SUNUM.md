@@ -18,15 +18,13 @@ Derste uygulamayı gösterirken izlenecek sıra. Toplam 6-8 dakika.
    & "C:\Program Files\Tesseract-OCR\tesseract.exe" --version
    ```
 
-3. **Gmail taramasını evde yapın.** Derste internet olmayabilir. Evde **E-posta** sekmesinden
-   tarayın ama **kaydetmeyin**. Bulunan e-postalar listede bekler; derste sadece "Seçilenleri
-   Kaydet" demeniz yeter. Böylece internet olmadan da gösterebilirsiniz.
+3. **Örnek ekstreyi masaüstüne kopyalayın.** `ornek_ekstreler\hesap_hareketleri.csv` dosyasını
+   kolay ulaşabileceğiniz bir yere koyun; sunumda hızlı seçersiniz.
 
-4. **SMS için ağ kurulumuna güvenmeyin.** Derste telefon-bilgisayar aynı ağda olmayabilir,
-   güvenlik duvarı engelleyebilir. Aşağıdaki **yapıştırma** yöntemi aynı kodu çalıştırır ve
-   her koşulda çalışır.
+4. **Klasör izlemeyi göstereceksiniz:** izlenecek klasöre bir ekstre kopyalayıp bırakmak için
+   ikinci bir dosya hazır bulundurun (örneğin `ornek_ekstreler\kart_ekstresi.xlsx`).
 
-5. Uygulamayı açıp sağ üstten **içinde bulunulan ayı** seçin.
+5. Uygulamayı açın; veri bulunan en son ay kendiliğinden seçilir.
 
 ---
 
@@ -50,42 +48,22 @@ kategoriye düşüyor."*
 Beklenen sonuç: tutar **757,35**, tarih **2026-10-24**, işyeri **ÖRNEK MARKET A.Ş.**
 Ham metin alt kutuda görünür. **Onayla ve Kaydet**.
 
-### 4. SMS (1 dk)
-**SMS** sekmesi → alttaki kutuya aşağıdaki metni yapıştırın → **Metni Çözümle**:
-
-```
-Sayin musterimiz, 1234 nolu kredi kartiniz ile MIGROS ANKARA'da 245,50 TL tutarinda islem gerceklestirilmistir.
-```
-
-Listeye düşer: MİGROS ANKARA, 245,50 ₺, Gider. Satıra tıklayıp **Seçilenleri Kaydet**.
-
-İkinci örnek (gelir olarak tanınır):
-```
-Hesabiniza 32.500,00 TL maas odemesi yatmistir. Bakiye: 45.120,30 TL
-```
-
-Üçüncü örnek (bilgilendirme mesajı, harcama sayılmaz):
-```
-Kart borcunuz icin asgari odeme tutari 1.250,00 TL'dir. Son odeme tarihi 05.11.2026
-```
-
-Söylenecek: *"Çözümleyici tutarı, işyerini, tarihi ve kart son dört hanesini ayırıyor; gelir ile
-gideri ayırt ediyor; limit ve asgari ödeme gibi bilgilendirme mesajlarını harcama saymıyor.
-Telefondan canlı almak için de bir webhook servisi var ama aynı ağ gerektirdiği için derste
-yapıştırma yöntemini kullanıyorum."*
-
-### 5. E-posta (30 sn)
-**E-posta** sekmesi. Evde taradıysanız liste zaten dolu. Bir satır seçip **Seçilenleri Kaydet**.
-Söylenecek: *"Gmail'e IMAP ve uygulama şifresiyle bağlanıyor, posta kutusunu yalnızca okuyor.
-Fatura ve sipariş e-postalarını süzüp gövdeden veya PDF ekinden tutarı çıkarıyor."*
-
-### 6. Hesap ve Kart — ekstre yükleme (1 dk)
+### 4. Hesap ve Kart — ekstre yükleme (1,5 dk)
 **Dosya Seç** → `ornek_ekstreler\hesap_hareketleri.csv` → sütunların otomatik eşleştiğini
 gösterin → **İçe Aktar**.
-Söylenecek: *"Her bankanın sütun adı ve sayı biçimi farklı; başlık satırını ve sütunları kendi
-buluyor. Kart borcu ödemesini ve virmanı gider saymıyor, yoksa harcama iki kez sayılırdı."*
 
-### 7. Mutabakat — teknik vurgu (1,5 dk) ⭐
+Sonra **"Ekstreyi kendiliğinden yükle"** bölümünü gösterin: anahtarı açın, izlenen klasöre
+hazırladığınız ikinci ekstreyi kopyalayın ve birkaç saniye içinde "Ekstre bulundu" bildiriminin
+geldiğini gösterin.
+
+Bakiye kartının altındaki açıklamayı da okutun: bakiyenin bir çıpa tarihinden ve sonraki
+hareketlerden nasıl hesaplandığı yazıyor.
+Söylenecek: *"Her bankanın sütun adı ve sayı biçimi farklı; başlık satırını ve sütunları kendi
+buluyor. Kart borcu ödemesini ve virmanı gider saymıyor, yoksa harcama iki kez sayılırdı.
+Kullanıcının tek yaptığı iş bankadan dosyayı indirmek; klasör izleme açıksa uygulamaya hiç
+dokunmuyor. Bakiyeyi de elle güncellemesi gerekmiyor, çıpadan hesaplanıyor."*
+
+### 5. Mutabakat — teknik vurgu (1,5 dk) ⭐
 **En önemli bölüm burası.** **Çiftleri Tara** → eşleşmeler listelenir → **Tümünü Seç** →
 **Seçilenleri Birleştir**.
 
@@ -95,13 +73,13 @@ aynı ve tarihi üç güne kadar yakın kayıtları eşleştirip olasılık puan
 kaydını asıl kabul edip diğerini siliyor. Bu olmadan Ekim gideri 18.498 ₺ görünüyordu, gerçek
 değeri 15.604 ₺."*
 
-### 8. Nakit Akışı (1 dk)
+### 6. Nakit Akışı (1 dk)
 Takvimde her günün hareketi ve gün sonu bakiyesi. Gelecek günlerde sabit giderler düşecekleri
 güne yerleşir.
 Söylenecek: *"Diğer sayfalar geçmişi anlatıyor, bu sayfa önümüzdeki günleri. Bakiye ay içinde
 eksiye düşüyorsa önceden uyarıyor."*
 
-### 9. Öneriler — analiz motoru (1 dk)
+### 7. Öneriler — analiz motoru (1 dk)
 Üstte aylık sabit giderler, altta uyarılar: Netflix'e gelen zam, iptal edilmiş Spotify, olağan
 dışı harcama.
 Söylenecek: *"Düzenli ödemeyi tutarından değil takviminden tanıyor: her ay tam bir kez ve hep
@@ -117,9 +95,17 @@ Türkiye'de resmi yol BKM ve TCMB'nin Açık Bankacılık altyapısı (ÖHVPS). 
 lisanslı kuruluş olmayı ve müşteri rızası akışını gerektiriyor; bireysel geliştiriciye API
 anahtarı verilmiyor. Bu yüzden veri ekstre, fiş, SMS ve e-posta üzerinden alınıyor.
 
+**"SMS ve e-posta neden yok?"**
+İkisi de yazıldı ve testleri geçiyor (`sms_parser.py` 14 farklı banka mesajında doğru sonuç
+veriyor). Ancak SMS için telefon ile bilgisayarın aynı ağda olması, güvenlik duvarı izni ve
+Play Store dışından uygulama kurulması; Gmail için uygulama şifresi üretilmesi gerekiyordu.
+Kurulum maliyeti günlük kullanımı anlamsız kıldığı için arayüzden çıkarıldı, kodları projede
+duruyor. Bunun yerine manuel işi azaltmaya odaklanıldı: klasör izleme ve türetilmiş bakiye.
+
 **"Bunu insanlar kullanır mı?"**
-Bugünkü haliyle hayır: masaüstü uygulaması, Python ve Tesseract kurulumu gerekiyor, ekstre elle
-yükleniyor. Çözdüğü üç gerçek problem var (çok bankalı tablo, nakit harcama, verinin yerel
+Birden fazla bankası olan, nakit de harcayan ve verisini üçüncü tarafa vermek istemeyen biri için
+anlamlı. Tek bankası olup yalnızca kartla harcayan biri kendi banka uygulamasını kullansın.
+Yaygın benimsenme için masaüstü olması ve Python kurulumu gerektirmesi engel; Çözdüğü üç gerçek problem var (çok bankalı tablo, nakit harcama, verinin yerel
 kalması) ama bunun kullanıcıya ulaşması için web veya mobil sürüm gerekir. Analiz motoru
 (`insights.py`, `analyzer.py`, `reconcile.py`, `statement.py`) olduğu gibi taşınabilir.
 
