@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Kullanıcı verisi (kişisel harcamalar repoya girmesin)
+finance.db
+*.db
+
+# Editör / sistem
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
